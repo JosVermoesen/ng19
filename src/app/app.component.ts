@@ -1,7 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ContentfulService } from './contentful.service';
-import { Entry } from 'contentful';
-import { MdToHtmlPipe } from './md-to-html.pipe';
+import { Component, OnInit, inject } from "@angular/core";
+import { Entry } from "contentful";
+import { MdToHtmlPipe } from "./helpers/md-to-html.pipe";
+import { ContentfulService } from "./services/contentful.service";
 
 @Component({
   selector: 'app-root',

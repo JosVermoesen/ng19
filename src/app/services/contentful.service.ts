@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
 
 import { createClient } from 'contentful';
-import { constantVariables } from './app.constants';
+import { constantVariables } from '../app.constants';
 
 @Injectable({
   providedIn: 'root',
