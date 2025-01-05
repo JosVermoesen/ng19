@@ -1,12 +1,26 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { ContentfulService } from './contentful.service';
+import { Entry } from 'contentful';
+import { MdToHtmlPipe } from './md-to-html.pipe';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [MdToHtmlPipe],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
-export class AppComponent {
-  title = 'ng19';
+export class AppComponent implements OnInit {
+  contentfulService = inject(ContentfulService);
+
+  cfCivilLiability!: Entry<any>;
+
+  ngOnInit() {
+    const gCivilLiabilityId = '2DsHv5fW3KTTnjf1av7ic8';
+    this.contentfulService
+      .getContentDetail(gCivilLiabilityId)
+      .subscribe((result) => {
+        this.cfCivilLiability = result;
+        // console.log(this.cfCivilLiability);
+      });
+  }
 }
